@@ -1,0 +1,47 @@
+#oc_platform_homepage:
+#    path:     /hello-world
+#    defaults: { _controller: OCPlatformBundle:Default:index }
+
+
+oc_platform_home:
+    path:      /{page}
+    defaults: 
+      _controller: OCPlatformBundle:Post:index
+      page:        1
+    requirements:
+        page: \d*  
+    
+oc_platform_view:
+    path:      /advert/{id}
+    defaults:
+        _controller: OCPlatformBundle:Post:view
+    requirements:
+        id: \d+
+    
+oc_platform_add:
+    path:      /add
+    defaults: { _controller: OCPlatformBundle:Post:add }
+
+oc_platform_view_slug:
+    path:      /platform/{year}/{slug}.{format}
+    defaults:
+        _controller: OCPlatformBundle:Default:viewSlug
+        format:      html
+    requirements:
+      year:   \d{4}
+      format: html|xml
+
+
+oc_platform_edit:
+    path:      /edit/{id}
+    defaults:
+        _controller: OCPlatformBundle:Post:edit
+    requirements:
+        id: \d+
+
+oc_platform_delete:
+    path:      /delete/{id}
+    defaults:
+        _controller: OCPlatformBundle:Post:delete
+    requirements:
+        id: \d+
